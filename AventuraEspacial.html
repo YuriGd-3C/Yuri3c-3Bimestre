@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Espacial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #FFF;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #111;
+            border-radius: 8px;
+        }
+        .option {
+            background-color: #333;
+            border: 1px solid #FFF;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .option:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aventura Espacial</h1>
+        <p id="story">Você é um astronauta explorando o espaço profundo. Sua nave avistou um planeta misterioso à frente. O que você faz?</p>
+        
+        <div id="choices">
+            <div class="option" onclick="chooseOption('explorar')">Explorar o planeta</div>
+            <div class="option" onclick="chooseOption('continuar')">Continuar viagem</div>
+        </div>
+    </div>
+
+    <script>
+        function chooseOption(choice) {
+            const story = document.getElementById("story");
+            const choices = document.getElementById("choices");
+            choices.innerHTML = ''; // Limpa as opções para a próxima escolha
+
+            if (choice === 'explorar') {
+                story.innerText = "Você pousa no planeta e descobre formas de vida alienígenas amigáveis. Elas te convidam para sua vila. O que você faz?";
+                choices.innerHTML = `
+                    <div class="option" onclick="chooseOption('vila')">Ir para a vila</div>
+                    <div class="option" onclick="chooseOption('nave')">Retornar à nave</div>
+                `;
+            } else if (choice === 'continuar') {
+                story.innerText = "Você ignora o planeta e continua sua viagem. De repente, você avista uma tempestade de meteoros à frente!";
+                choices.innerHTML = `
+                    <div class="option" onclick="chooseOption('desviar')">Desviar da tempestade</div>
+                    <div class="option" onclick="chooseOption('atravessar')">Atravessar a tempestade</div>
+                `;
+            } else if (choice === 'vila') {
+                story.innerText = "Na vila, você aprende sobre uma antiga tecnologia alienígena e forma uma aliança. Parabéns, você fez amigos no espaço!";
+            } else if (choice === 'nave') {
+                story.innerText = "Você retorna à nave e decide registrar sua descoberta para futuras expedições. Uma nova missão te aguarda.";
+            } else if (choice === 'desviar') {
+                story.innerText = "Você desvia habilmente da tempestade e continua sua viagem. Parabéns, você sobreviveu!";
+            } else if (choice === 'atravessar') {
+                story.innerText = "Você tenta atravessar a tempestade, mas sua nave sofre danos e você precisa retornar à Terra para reparos.";
+            }
+        }
+    </script>
+</body>
+</html>
